@@ -1,5 +1,6 @@
 CREATE TABLE tasks (
-                       id SERIAL PRIMARY KEY,
+                       id BIGSERIAL PRIMARY KEY,  -- Alterado de SERIAL para BIGSERIAL
                        title VARCHAR(255) NOT NULL,
-                       completed BOOLEAN DEFAULT false
+                       completed BOOLEAN DEFAULT false,
+                       due_date DATE
 );
