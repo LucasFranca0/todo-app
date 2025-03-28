@@ -1,0 +1,37 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres-todo
+    environment:
+      POSTGRES_DB: todo_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 2212
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck: # Verifica se o PostgreSQL está pronto
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d todo_db" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: spring-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy  # Só inicia após o PostgreSQL estar pronto
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/todo_db # Use o nome do serviço "postgres"
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 2212
+      SPRING_JPA_HIBERNATE_DDL-AUTO: validate
+      SPRING_FLYWAY_ENABLED: "true"
+      SPRING_FLYWAY_LOCATIONS: classpath:db/migration
+volumes:
+  postgres_data:
