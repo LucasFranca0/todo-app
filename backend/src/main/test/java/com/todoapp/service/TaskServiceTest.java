@@ -1,5 +1,7 @@
 package com.todoapp.service;
 
+import com.todoapp.dto.TaskRequestDTO;
+import com.todoapp.mapper.TaskMapper;
 import com.todoapp.model.Task;
 import com.todoapp.repository.TaskRepository;
 import org.junit.jupiter.api.Test;
@@ -7,6 +9,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -19,16 +23,21 @@ public class TaskServiceTest {
     @Mock
     private TaskRepository taskRepository;
 
+    @Mock
+    private TaskMapper taskMapper;
+
     @InjectMocks
     private TaskService taskService;
 
+
     @Test
     void createTask_ShouldReturnSavedTask() {
-        Task task = new Task();
+        TaskRequestDTO dto = new TaskRequestDTO("Test Task", LocalDate.now());
+        Task task = taskMapper.toEntity(dto);
         task.setTitle("Test Task");
         when(taskRepository.save(any(Task.class))).thenReturn(task);
 
-        Task savedTask = taskService.createTask(task);
+        Task savedTask = taskService.createTask(dto);
         assertNotNull(savedTask);
         assertEquals("Test Task", savedTask.getTitle());
     }

@@ -1,5 +1,7 @@
 package com.todoapp.service;
 
+import com.todoapp.dto.TaskRequestDTO;
+import com.todoapp.mapper.TaskMapper;
 import com.todoapp.model.Task;
 import com.todoapp.repository.TaskRepository;
 import jakarta.transaction.Transactional;
@@ -12,12 +14,15 @@ import java.util.List;
 public class TaskService {
 
     private final TaskRepository taskRepository;
+    private final TaskMapper taskMapper;
 
-    public TaskService(TaskRepository taskRepository) {
+    public TaskService(TaskRepository taskRepository, TaskMapper taskMapper) {
         this.taskRepository = taskRepository;
+        this.taskMapper = taskMapper;
     }
 
-    public Task createTask(Task task) {
+    public Task createTask(TaskRequestDTO dto) {
+        Task task = taskMapper.toEntity(dto);
         return taskRepository.save(task);
     }
 
