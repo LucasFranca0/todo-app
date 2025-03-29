@@ -1,7 +1,11 @@
 package com.todoapp.controller;
 
+import com.todoapp.dto.TaskRequestDTO;
+import com.todoapp.dto.TaskResponseDTO;
+import com.todoapp.mapper.TaskMapper;
 import com.todoapp.model.Task;
 import com.todoapp.service.TaskService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,15 +17,17 @@ import java.util.List;
 public class TaskController {
 
     private final TaskService taskService;
+    private final TaskMapper taskMapper;
 
-    public TaskController(TaskService taskService) {
+    public TaskController(TaskService taskService, TaskMapper taskMapper) {
         this.taskService = taskService;
+        this.taskMapper = taskMapper;
     }
 
     @PostMapping
-    public ResponseEntity<Task> createTask(@RequestBody Task task) {
-        Task savedTask = taskService.createTask(task);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedTask);
+    @ResponseStatus(HttpStatus.CREATED)
+    public TaskResponseDTO createTask(@Valid @RequestBody TaskRequestDTO dto) {
+        return taskMapper.toResponseDTO(taskService.createTask(dto));
     }
 
     @GetMapping
