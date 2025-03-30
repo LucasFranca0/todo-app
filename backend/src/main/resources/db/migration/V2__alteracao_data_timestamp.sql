@@ -1,0 +1,12 @@
+ALTER TABLE tasks
+    ALTER COLUMN completed SET NOT NULL;
+
+ALTER TABLE tasks
+DROP
+COLUMN due_date;
+
+ALTER TABLE tasks
+    ADD due_date TIMESTAMP WITH TIME ZONE;
+
+ALTER TABLE tasks
+    ALTER COLUMN title DROP NOT NULL;
