@@ -3,7 +3,7 @@ package com.todoapp.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.time.ZonedDateTime;
 
 @Data
 @Entity
@@ -16,6 +16,6 @@ public class Task {
     private String title;
     private boolean completed;
 
-    @Column(name = "due_date")
-    private LocalDate dueDate;
+    @Column(name = "due_date", columnDefinition = "TIMESTAMP WITH TIME ZONE")
+    private ZonedDateTime dueDate;
 }
