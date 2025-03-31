@@ -1,10 +1,10 @@
 package com.todoapp.dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public record TaskResponseDTO(
         String title,
         boolean completed,
-        LocalDate dueDate
+        LocalDateTime dueDate
 ) {
 }
