@@ -1,10 +1,16 @@
 package com.todoapp.service;
 
 import com.todoapp.dto.TaskRequestDTO;
+import com.todoapp.dto.TaskResponseDTO;
+import com.todoapp.exception.GlobalExceptionHandler;
+import com.todoapp.exception.TaskNotFoundException;
 import com.todoapp.mapper.TaskMapper;
 import com.todoapp.model.Task;
 import com.todoapp.repository.TaskRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -47,4 +53,13 @@ public class TaskService {
     public void deleteTask(Long id) {
         taskRepository.deleteById(id);
     }
+
+    public TaskResponseDTO markTaskAsCompleted(Long id) {
+        Task task = taskRepository.findById(id)
+                        .orElseThrow(()-> new TaskNotFoundException(id));
+        task.setCompleted(true);
+        Task updatedTask = taskRepository.save(task);
+        return taskMapper.toResponseDTO(updatedTask);
+    }
+
 }

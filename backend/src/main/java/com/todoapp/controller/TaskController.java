@@ -53,4 +53,10 @@ public class TaskController {
         taskService.deleteTask(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PatchMapping("/{id}/complete")
+    public ResponseEntity<TaskResponseDTO> completeTask(@PathVariable Long id) {
+        TaskResponseDTO updateTask = taskService.markTaskAsCompleted(id);
+        return ResponseEntity.ok(updateTask);
+    }
 }
