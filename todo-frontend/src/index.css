@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.Mui-checked {
+  color: #4CAF50 !important;
+}
+
+.Mui-disabled.Mui-checked {
+  color: #81C784 !important;
+}
