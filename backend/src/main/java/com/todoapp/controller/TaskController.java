@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/tasks")
@@ -55,8 +56,9 @@ public class TaskController {
     }
 
     @PatchMapping("/{id}/complete")
-    public ResponseEntity<TaskResponseDTO> completeTask(@PathVariable Long id) {
-        TaskResponseDTO updateTask = taskService.markTaskAsCompleted(id);
+    public ResponseEntity<TaskResponseDTO> completeTask(@PathVariable Long id, @RequestBody Map<String, Boolean> update) {
+        Boolean completed = update.get("completed");
+        TaskResponseDTO updateTask = taskService.updateTaskCompletion(id, completed);
         return ResponseEntity.ok(updateTask);
     }
 }

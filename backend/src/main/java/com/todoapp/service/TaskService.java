@@ -54,10 +54,10 @@ public class TaskService {
         taskRepository.deleteById(id);
     }
 
-    public TaskResponseDTO markTaskAsCompleted(Long id) {
+    public TaskResponseDTO updateTaskCompletion(Long id, Boolean completed) {
         Task task = taskRepository.findById(id)
                         .orElseThrow(()-> new TaskNotFoundException(id));
-        task.setCompleted(true);
+        task.setCompleted(completed);
         Task updatedTask = taskRepository.save(task);
         return taskMapper.toResponseDTO(updatedTask);
     }
