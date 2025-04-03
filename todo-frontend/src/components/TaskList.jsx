@@ -1,9 +1,28 @@
+// src/components/TaskList.jsx
+import React, { useState } from 'react';
 import { useTasks } from '../contexts/TaskContext';
-import TaskItem from './TaskItem';
-import { List, Paper, Typography } from '@mui/material';
+import { List, Paper, Typography, TextField, Button, ListItem, ListItemText, ListItemSecondaryAction, IconButton, Checkbox } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
 
 const TaskList = () => {
-    const { tasks, loading } = useTasks();
+    const { tasks, loading, updateTask, completeTask } = useTasks();
+    const [editingTaskId, setEditingTaskId] = useState(null);
+    const [newTitle, setNewTitle] = useState('');
+
+    const handleEditClick = (task) => {
+        setEditingTaskId(task.id);
+        setNewTitle(task.title);
+    };
+
+    const handleSaveClick = (id) => {
+        updateTask(id, { title: newTitle });
+        setEditingTaskId(null);
+        setNewTitle('');
+    };
+
+    const handleCompleteChange = (id, completed) => {
+        completeTask(id, completed);
+    };
 
     if (loading) {
         return <Typography>Carregando...</Typography>;
@@ -16,7 +35,35 @@ const TaskList = () => {
             </Typography>
             <List>
                 {tasks.map((task) => (
-                    <TaskItem key={task.id} task={task} />
+                    <ListItem key={task.id}>
+                        <Checkbox
+                            checked={task.completed}
+                            onChange={(e) => handleCompleteChange(task.id, e.target.checked)}
+                        />
+                        {editingTaskId === task.id ? (
+                            <TextField
+                                value={newTitle}
+                                onChange={(e) => setNewTitle(e.target.value)}
+                                fullWidth
+                            />
+                        ) : (
+                            <ListItemText
+                                primary={task.title}
+                                style={{ textDecoration: task.completed ? 'line-through' : 'none' }}
+                            />
+                        )}
+                        <ListItemSecondaryAction>
+                            {editingTaskId === task.id ? (
+                                <Button onClick={() => handleSaveClick(task.id)} color="primary">
+                                    Salvar
+                                </Button>
+                            ) : (
+                                <IconButton edge="end" onClick={() => handleEditClick(task)}>
+                                    <EditIcon />
+                                </IconButton>
+                            )}
+                        </ListItemSecondaryAction>
+                    </ListItem>
                 ))}
             </List>
         </Paper>
