@@ -18,4 +18,10 @@ public class Task {
 
     @Column(name = "due_date", columnDefinition = "TIMESTAMP WITH TIME ZONE")
     private ZonedDateTime dueDate;
+
+    @Column(name = "created_at", columnDefinition = "TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP")
+    private ZonedDateTime createdAt;
+
+    @Column(name = "updated_at", columnDefinition = "TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP")
+    private ZonedDateTime updatedAt;
 }

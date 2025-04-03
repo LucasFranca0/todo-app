@@ -1,23 +1,25 @@
 import { useTasks } from '../contexts/TaskContext';
 import TaskItem from './TaskItem';
-import { CircularProgress, List, Typography } from '@mui/material';
+import { List, Paper, Typography } from '@mui/material';
 
 const TaskList = () => {
     const { tasks, loading } = useTasks();
 
-    if (loading) return <CircularProgress />;
+    if (loading) {
+        return <Typography>Carregando...</Typography>;
+    }
 
     return (
-        <div>
-            <Typography variant="h4" gutterBottom>
-                Minhas Tarefas
+        <Paper elevation={3} sx={{ padding: 2 }}>
+            <Typography variant="h6" gutterBottom>
+                Lista de Tarefas
             </Typography>
             <List>
-                {tasks.map(task => (
+                {tasks.map((task) => (
                     <TaskItem key={task.id} task={task} />
                 ))}
             </List>
-        </div>
+        </Paper>
     );
 };
 

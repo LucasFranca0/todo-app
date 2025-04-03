@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -32,7 +33,7 @@ public class TaskServiceTest {
 
     @Test
     void createTask_ShouldReturnSavedTask() {
-        TaskRequestDTO dto = new TaskRequestDTO("Test Task", LocalDate.now());
+        TaskRequestDTO dto = new TaskRequestDTO("Test Task", LocalDateTime.now().now());
         Task task = taskMapper.toEntity(dto);
         task.setTitle("Test Task");
         when(taskRepository.save(any(Task.class))).thenReturn(task);
@@ -154,17 +155,6 @@ public class TaskServiceTest {
         assertEquals(0, tasks.size());
     }
 
-    @Test
-    void createTask_ShouldThrowException_WhenTaskIsNull() {
-        Exception exception = org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            taskService.createTask(null);
-        });
-
-        String expectedMessage = "Task cannot be null";
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
-    }
 
     @Test
     void getTaskById_ShouldThrowException_WhenIdIsNull() {

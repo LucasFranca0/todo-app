@@ -24,6 +24,7 @@ export const TaskProvider = ({ children }) => {
             setTasks([...tasks, response.data]);
         } catch (error) {
             console.error("Erro ao adicionar tarefa:", error);
+            throw error;
         }
     };
 

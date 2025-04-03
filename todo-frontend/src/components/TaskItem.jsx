@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTasks } from '../contexts/TaskContext';
-import { Checkbox, IconButton, ListItem, ListItemText, styled } from '@mui/material';
+import { Checkbox, IconButton, ListItem, ListItemText, styled, Snackbar, Alert, Paper } from '@mui/material';
 import { Delete } from '@mui/icons-material';
 
 const StyledListItemText = styled(ListItemText)(({ completed }) => ({
@@ -12,6 +12,7 @@ const StyledListItemText = styled(ListItemText)(({ completed }) => ({
 const TaskItem = ({ task }) => {
     const { deleteTask, completeTask } = useTasks();
     const [isCompleting, setIsCompleting] = useState(false);
+    const [error, setError] = useState(null);
 
     const handleComplete = async () => {
         if (!isCompleting) {
@@ -20,34 +21,51 @@ const TaskItem = ({ task }) => {
                 if (task && task.id) {
                     await completeTask(task.id, !task.completed);
                 } else {
-                    console.error("ID da tarefa está indefinido");
+                    setError("ID da tarefa está indefinido");
                 }
+            } catch (err) {
+                setError("Erro ao completar/descompletar tarefa");
             } finally {
                 setIsCompleting(false);
             }
         }
     };
 
+    const handleCloseError = () => {
+        setError(null);
+    };
+
     return (
-        <ListItem
-            secondaryAction={
-                <IconButton edge="end" onClick={() => deleteTask(task.id)}>
-                    <Delete />
-                </IconButton>
-            }
-        >
-            <Checkbox
-                checked={task.completed}
-                onChange={handleComplete}
-                disabled={isCompleting}
-                color="primary"
-            />
-            <StyledListItemText
-                primary={task.title}
-                secondary={`Vence em: ${new Date(task.dueDate).toLocaleString()}`}
-                completed={task.completed}
-            />
-        </ListItem>
+        <>
+            <Paper elevation={1} sx={{ marginBottom: 1 }}>
+                <ListItem
+                    secondaryAction={
+                        <IconButton edge="end" onClick={() => deleteTask(task.id)}>
+                            <Delete />
+                        </IconButton>
+                    }
+                >
+                    <Checkbox
+                        checked={task.completed}
+                        onChange={handleComplete}
+                        disabled={isCompleting}
+                        color="primary"
+                    />
+                    <StyledListItemText
+                        primary={task.title}
+                        secondary={`Vence em: ${new Date(task.dueDate).toLocaleString()}`}
+                        completed={task.completed}
+                    />
+                </ListItem>
+            </Paper>
+            {error && (
+                <Snackbar open={true} autoHideDuration={6000} onClose={handleCloseError}>
+                    <Alert onClose={handleCloseError} severity="error" sx={{ width: '100%' }}>
+                        {error}
+                    </Alert>
+                </Snackbar>
+            )}
+        </>
     );
 };
 

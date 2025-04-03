@@ -5,15 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37c0b207-8343-4b04-a7cd-48c244ee93cf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/todoapp/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/todoapp/config/CorsConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/todoapp/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/todoapp/controller/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/todoapp/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/todoapp/service/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/todoapp/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/todoapp/model/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/test/java/com/todoapp/service/TaskServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/test/java/com/todoapp/service/TaskServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-frontend/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/todo-frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/todo-frontend/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/todo-frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-frontend/src/components/TaskForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/todo-frontend/src/components/TaskForm.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo-frontend/src/components/TaskItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/todo-frontend/src/components/TaskItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-frontend/src/components/TaskList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/todo-frontend/src/components/TaskList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo-frontend/src/contexts/TaskContext.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/todo-frontend/src/contexts/TaskContext.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/todo-frontend/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/todo-frontend/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +30,8 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JavaScript File" />
+        <option value="JSX File" />
       </list>
     </option>
   </component>
@@ -52,47 +59,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Docker.backend/Dockerfile build.executor": "Run",
-    "Docker.backend/Dockerfile.executor": "Run",
-    "Docker.backend/docker-compose.yaml.backend: Compose Deployment.executor": "Run",
-    "Docker.backend/docker-compose.yaml: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yaml.backend: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yaml.postgres: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yaml: Compose Deployment.executor": "Run",
-    "JUnit.TaskServiceTest.createTask_ShouldReturnSavedTask.executor": "Run",
-    "JUnit.TaskServiceTest.executor": "Run",
-    "JUnit.TaskServiceTest.getTask_ShouldReturnSavedTask.executor": "Run",
-    "JUnit.TodoAppApplicationTests.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.TodoAppApplication (1).executor": "Run",
-    "git-widget-placeholder": "frontend",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Lucas/Workspace/Programação/teste/todo-list/todo_app/todo-frontend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Docker.backend/Dockerfile build.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.backend/Dockerfile.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.backend/docker-compose.yaml.backend: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.backend/docker-compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yaml.backend: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yaml.postgres: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TaskServiceTest.createTask_ShouldReturnSavedTask.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TaskServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TaskServiceTest.getTask_ShouldReturnSavedTask.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TodoAppApplicationTests.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.TodoAppApplication (1).executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lucas/Workspace/Programação/teste/todo-list/todo_app/todo-frontend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Lucas\Workspace\Programação\teste\todo-list\todo_app\backend\src\main" />
@@ -106,7 +113,7 @@
       <recent name="C:\Users\Lucas\Workspace\Programação\teste\todo-list\todo_app\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.docker-compose.yaml: Compose Deployment">
+  <component name="RunManager" selected="JUnit.TaskServiceTest">
     <configuration name="TaskServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="backend" />
       <extension name="coverage">
@@ -205,13 +212,16 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TaskServiceTest" />
         <item itemvalue="Docker.docker-compose.yaml: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yaml.postgres: Compose Deployment" />
         <item itemvalue="JUnit.TaskServiceTest.createTask_ShouldReturnSavedTask" />
-        <item itemvalue="JUnit.TaskServiceTest" />
         <item itemvalue="JUnit.TaskServiceTest.getTask_ShouldReturnSavedTask" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SeleniumInternalSettingsState">
+    <option name="lastUrl" value="http://localhost:3000/" />
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -240,6 +250,7 @@
       <workItem from="1743217972437" duration="8068000" />
       <workItem from="1743265744205" duration="5835000" />
       <workItem from="1743465951612" duration="11042000" />
+      <workItem from="1743639771558" duration="9372000" />
     </task>
     <servers />
   </component>
