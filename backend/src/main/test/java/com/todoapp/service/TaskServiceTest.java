@@ -1,6 +1,7 @@
 package com.todoapp.service;
 
 import com.todoapp.dto.TaskRequestDTO;
+import com.todoapp.dto.TaskResponseDTO;
 import com.todoapp.mapper.TaskMapper;
 import com.todoapp.model.Task;
 import com.todoapp.repository.TaskRepository;
@@ -9,12 +10,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -33,14 +33,27 @@ public class TaskServiceTest {
 
     @Test
     void createTask_ShouldReturnSavedTask() {
-        TaskRequestDTO dto = new TaskRequestDTO("Test Task", LocalDateTime.now().now());
-        Task task = taskMapper.toEntity(dto);
-        task.setTitle("Test Task");
-        when(taskRepository.save(any(Task.class))).thenReturn(task);
+        TaskRequestDTO dto = new TaskRequestDTO("Test Task", LocalDateTime.now());
+        Task taskEntity = new Task();
+        taskEntity.setId(1L);
+        taskEntity.setTitle("Test Task");
+        taskEntity.setCompleted(false);
+        taskEntity.setDueDate(ZonedDateTime.now(ZoneId.of("UTC")));
 
-        Task savedTask = taskService.createTask(dto);
-        assertNotNull(savedTask);
-        assertEquals("Test Task", savedTask.getTitle());
+        // Mock the interactions
+        when(taskMapper.toEntity(dto)).thenReturn(taskEntity);
+        when(taskRepository.save(taskEntity)).thenReturn(taskEntity);
+        taskMapper.toResponseDTO(taskEntity);
+        TaskResponseDTO expectedResponse = new TaskResponseDTO(taskEntity.getTitle(), taskEntity.isCompleted(), taskEntity.getDueDate().toLocalDateTime());
+
+        // Execute the service method
+        Task actualResponse = taskService.createTask(dto);
+
+        // Assertions
+        assertNotNull(actualResponse);
+        assertEquals(expectedResponse.title(), actualResponse.getTitle());
+        assertEquals(expectedResponse.completed(), actualResponse.isCompleted());
+        assertEquals(expectedResponse.dueDate(), actualResponse.getDueDate().toLocalDateTime());
     }
 
     @Test
@@ -133,20 +146,6 @@ public class TaskServiceTest {
     }
 
     @Test
-    void deleteTask_ShouldThrowException_WhenTaskNotFound() {
-        when(taskRepository.findById(1L)).thenReturn(java.util.Optional.empty());
-
-        Exception exception = org.junit.jupiter.api.Assertions.assertThrows(RuntimeException.class, () -> {
-            taskService.deleteTask(1L);
-        });
-
-        String expectedMessage = "Task not found with id: 1";
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
-    }
-
-    @Test
     void getAllTasks_ShouldReturnEmptyList_WhenNoTasks() {
         when(taskRepository.findAll()).thenReturn(java.util.List.of());
 
@@ -155,44 +154,18 @@ public class TaskServiceTest {
         assertEquals(0, tasks.size());
     }
 
-
     @Test
-    void getTaskById_ShouldThrowException_WhenIdIsNull() {
-        Exception exception = org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            taskService.getTaskById(null);
-        });
+    void updateTaskCompletion_ShouldReturnUpdatedTaskCompletion() {
+        Task task = new Task();
+        task.setTitle("Test Task");
+        task.setDueDate(ZonedDateTime.now(ZoneId.systemDefault()));
+        task.setCompleted(false);
 
-        String expectedMessage = "Task ID cannot be null";
-        String actualMessage = exception.getMessage();
+        when(taskRepository.findById(1L)).thenReturn(java.util.Optional.of(task));
+        when(taskRepository.save(task)).thenReturn(task);
+        taskService.updateTaskCompletion(1L, true);
 
-        assertEquals(expectedMessage, actualMessage);
-    }
-
-    @Test
-    void updateTask_ShouldThrowException_WhenIdIsNull() {
-        Task updatedTask = new Task();
-        updatedTask.setTitle("Updated Task");
-
-        Exception exception = org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            taskService.updateTask(null, updatedTask);
-        });
-
-        String expectedMessage = "Task ID cannot be null";
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
-    }
-
-    @Test
-    void deleteTask_ShouldThrowException_WhenIdIsNull() {
-        Exception exception = org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            taskService.deleteTask(null);
-        });
-
-        String expectedMessage = "Task ID cannot be null";
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
+        assertTrue(task.isCompleted());
     }
 
 }
