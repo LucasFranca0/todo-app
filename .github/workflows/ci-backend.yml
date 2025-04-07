@@ -82,7 +82,7 @@ jobs:
             -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }} \
             -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }} \
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
+            -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.java.coveragePlugin=jacoco \
             -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
             -Dsonar.scm.provider=git \
@@ -104,4 +104,4 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/todo-backend:ci
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          push: ${{ github.event_name == 'push' }}  # Push apenas em push para main
+          push: ${{ github.event_name == 'push' }}
