@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="37c0b207-8343-4b04-a7cd-48c244ee93cf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.github/workflows/ci-backend.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci-backend.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +116,7 @@
       <recent name="C:\Users\Lucas\Workspace\Programação\teste\todo-list\todo_app\src" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TaskServiceTest">
+  <component name="RunManager" selected="Docker.docker-compose.yaml: Compose Deployment">
     <configuration name="TaskServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="backend" />
       <extension name="coverage">
@@ -213,8 +215,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TaskServiceTest" />
         <item itemvalue="Docker.docker-compose.yaml: Compose Deployment" />
+        <item itemvalue="JUnit.TaskServiceTest" />
         <item itemvalue="Docker.docker-compose.yaml.postgres: Compose Deployment" />
         <item itemvalue="JUnit.TaskServiceTest.createTask_ShouldReturnSavedTask" />
         <item itemvalue="JUnit.TaskServiceTest.getTask_ShouldReturnSavedTask" />
@@ -253,7 +255,7 @@
       <workItem from="1743465951612" duration="11042000" />
       <workItem from="1743639771558" duration="9372000" />
       <workItem from="1743990078737" duration="5833000" />
-      <workItem from="1744040004748" duration="6749000" />
+      <workItem from="1744040004748" duration="11073000" />
     </task>
     <servers />
   </component>
