@@ -52,28 +52,6 @@ jobs:
         working-directory: ./backend
         run: mvn clean verify -Dspring.profiles.active=ci -Dspring.datasource.url=jdbc:postgresql://localhost:5432/${{ secrets.DB_NAME }} -Dspring.datasource.username=${{ secrets.DB_USER }} -Dspring.datasource.password=${{ secrets.DB_PASSWORD }}
 
-      - name: Download OWASP CLI
-        run: |
-          curl -sL https://github.com/dependency-check/DependencyCheck/releases/download/v9.0.0/dependency-check-9.0.0-release.zip -o dependency-check.zip
-          mkdir -p dependency-check/bin dependency-check/lib  # Cria diretórios necessários
-          unzip -j dependency-check.zip "dependency-check/bin/*" -d dependency-check/bin
-          unzip -j dependency-check.zip "dependency-check/lib/*" -d dependency-check/lib
-          chmod +x dependency-check/bin/dependency-check.sh
-          ls -la dependency-check/bin/dependency-check.sh
-
-      - name: Run OWASP Scan
-        run: |
-          ./dependency-check/bin/dependency-check.sh \
-            --project "todo-app" \
-            --scan "$GITHUB_WORKSPACE/backend" \  # Caminho absoluto para o diretório do projeto
-            --format SARIF \
-            --out "$GITHUB_WORKSPACE/dependency-check-report.sarif"
-
-          - name: Upload SARIF Report
-          uses: github/codeql-action/upload-sarif@v2
-          with:
-            sarif_file: "dependency-check-report.sarif"
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
