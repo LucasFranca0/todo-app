@@ -50,7 +50,7 @@ jobs:
         run: mvn clean verify -Dspring.profiles.active=ci -Dspring.datasource.url=${{ secrets.DB_URL }}
 
       - name: Dependency Check
-        uses: owasp/dependency-check-action@v3
+        uses: dependency-check-action@v2
         with:
           project: 'todo-backend'
           scanpath: './backend'
