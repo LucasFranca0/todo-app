@@ -65,7 +65,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./backend
-          tags: todo-backend:ci
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/todo-backend:ci
           cache-from: type=gha
           cache-to: type=gha,mode=max
           push: ${{ github.event_name == 'push' }}  # Push apenas em push para main

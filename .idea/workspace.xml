@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37c0b207-8343-4b04-a7cd-48c244ee93cf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/ci-backend.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci-backend.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="37c0b207-8343-4b04-a7cd-48c244ee93cf" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -253,7 +250,7 @@
       <workItem from="1743465951612" duration="11042000" />
       <workItem from="1743639771558" duration="9372000" />
       <workItem from="1743990078737" duration="5833000" />
-      <workItem from="1744040004748" duration="4871000" />
+      <workItem from="1744040004748" duration="4990000" />
     </task>
     <servers />
   </component>
