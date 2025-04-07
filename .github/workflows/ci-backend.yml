@@ -2,9 +2,9 @@ name: CI Backend
 
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
   pull_request:
-    branches: ["main"]
+    branches: [ "main" ]
 
 jobs:
   build-and-test:
@@ -49,11 +49,18 @@ jobs:
       - name: Build and test with Maven
         run: mvn clean verify -Dspring.profiles.active=ci -Dspring.datasource.url=${{ secrets.DB_URL }}
 
-      - name: Dependency Check
-        uses: dependency-check-action@v2
+      - name: OWASP Dependency Check
+        uses: owasp/dependency-check-action@v3.0.0
         with:
-          project: 'todo-backend'
+          project: 'todo-app'
           scanpath: './backend'
+          format: "SARIF"
+          fail_on_cvss: 8
+
+      - name: Upload SARIF Report
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: dependency-check-report.sarif
 
       - name: Build Docker image
         run: |
