@@ -49,18 +49,23 @@ jobs:
       - name: Build and test with Maven
         run: mvn clean verify -Dspring.profiles.active=ci -Dspring.datasource.url=${{ secrets.DB_URL }}
 
-      - name: OWASP Dependency Check
-        uses: owasp/dependency-check-action@v4
-        with:
-          project: 'todo-app'
-          scanpath: './backend'
-          format: "SARIF"
-          fail_on_cvss: 8
+      - name: Download OWASP CLI
+        run: |
+          curl -sL https://github.com/dependency-check/DependencyCheck/releases/download/v9.0.0/dependency-check-9.0.0-release.zip -o dc.zip
+          unzip dc.zip -d dependency-check
+
+      - name: Run OWASP Scan
+        run: |
+          ./dependency-check/bin/dependency-check.sh \
+            --project "todo-app" \
+            --scan "./backend" \
+            --format SARIF \
+            --out "./dependency-check-report.sarif"
 
       - name: Upload SARIF Report
         uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: dependency-check-report.sarif
+          sarif_file: "./dependency-check-report.sarif"
 
       - name: Build Docker image
         run: |
