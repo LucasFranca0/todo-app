@@ -13,9 +13,9 @@ jobs:
       postgres:
         image: postgres:15
         env:
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          DB_URL: ${{ secrets.DB_URL }}
+          POSTGRES_USER: ${{ secrets.DB_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          POSTGRES_URL: ${{ secrets.DB_URL }}
         ports:
           - 5433:5432
         options: >-
