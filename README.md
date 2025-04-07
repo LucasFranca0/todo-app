@@ -1,4 +1,5 @@
 # Todo App
+[![CI](https://github.com/LucasFranca0/todo-app/actions/workflows/ci-backend.yml/badge.svg)](https://github.com/LucasFranca0/todo-app/actions/workflows/ci-backend.yml)
 
 Este é um aplicativo de tarefas desenvolvido com Spring Boot. O objetivo deste projeto é fornecer uma aplicação simples para gerenciar tarefas, permitindo criar, visualizar, atualizar e excluir tarefas.
 
