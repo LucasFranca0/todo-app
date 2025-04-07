@@ -3,9 +3,9 @@ services:
     image: postgres:latest
     container_name: postgres-todo
     environment:
-      POSTGRES_DB: todo_db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 2212
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
     ports:
       - "5433:5432"
     volumes:
@@ -27,11 +27,16 @@ services:
       postgres:
         condition: service_healthy  # Só inicia após o PostgreSQL estar pronto
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/todo_db # Use o nome do serviço "postgres"
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: 2212
-      SPRING_JPA_HIBERNATE_DDL-AUTO: validate
-      SPRING_FLYWAY_ENABLED: "true"
-      SPRING_FLYWAY_LOCATIONS: classpath:db/migration
+      - SPRING_DATASOURCE_URL=${DB_URL}
+      - SPRING_DATASOURCE_USERNAME=${DB_USER}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
+      - SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE=2
+      - SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE=10
+      - SPRING_JPA_HIBERNATE_DDL-AUTO= validate
+      - SPRING_FLYWAY_ENABLED= true
+      - SPRING_FLYWAY_LOCATIONS= classpath:db/migration
+    env_file: .env
 volumes:
   postgres_data:

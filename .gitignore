@@ -50,3 +50,4 @@ dist/
 
 # Env
 .env
+*.env.*
