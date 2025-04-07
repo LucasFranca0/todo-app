@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: read
+  security-events: write
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -15,9 +19,9 @@ jobs:
         env:
           POSTGRES_USER: ${{ secrets.DB_USER }}
           POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          POSTGRES_DB: todo_db
+          POSTGRES_DB: ${{ secrets.DB_NAME }}  # Use um secret
         ports:
-          - 5433:5432
+          - 5432:5432  # Porta padrão
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -38,24 +42,27 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          key: ${{ runner.os }}-m2-${{ hashFiles('backend/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2-
+
+      - name: Wait for PostgreSQL
+        run: sleep 10
 
       - name: Build and test with Maven
         working-directory: ./backend
-        run: mvn clean verify -Dspring.profiles.active=ci -Dspring.datasource.url=${{ secrets.DB_URL }}
-          -Dspring.datasource.username=${{ secrets.DB_USER }} -Dspring.datasource.password=${{ secrets.DB_PASSWORD }}
+        run: mvn clean verify -Dspring.profiles.active=ci -Dspring.datasource.url=jdbc:postgresql://localhost:5432/${{ secrets.DB_NAME }} -Dspring.datasource.username=${{ secrets.DB_USER }} -Dspring.datasource.password=${{ secrets.DB_PASSWORD }}
 
       - name: Download OWASP CLI
         run: |
-          curl -sL https://github.com/dependency-check/DependencyCheck/releases/download/v9.0.0/dependency-check-9.0.0-release.zip -o dc.zip
-          unzip dc.zip -d dependency-check
+          curl -sL https://github.com/dependency-check/DependencyCheck/releases/download/v9.0.0/dependency-check-9.0.0-release.zip -o dependency-check.zip
+          unzip dependency-check.zip -d dependency-check
+          chmod +x dependency-check/bin/dependency-check.sh  # Garante permissão de execução
 
       - name: Run OWASP Scan
         run: |
           ./dependency-check/bin/dependency-check.sh \
             --project "todo-app" \
-            --scan "./backend" \
+            --scan "./backend" \  # Ajuste para o caminho do seu projeto
             --format SARIF \
             --out "./dependency-check-report.sarif"
 
@@ -64,7 +71,14 @@ jobs:
         with:
           sarif_file: "./dependency-check-report.sarif"
 
-      - name: Build Docker image
-        run: |
-          cd backend
-          docker build -t todo-backend:ci .
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image with cache
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend
+          tags: todo-backend:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          push: ${{ github.event_name == 'push' }}  # Push apenas em push para main
