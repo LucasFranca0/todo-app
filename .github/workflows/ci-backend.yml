@@ -15,7 +15,7 @@ jobs:
         env:
           POSTGRES_USER: ${{ secrets.DB_USER }}
           POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          POSTGRES_URL: ${{ secrets.DB_URL }}
+          POSTGRES_DB: todo_db
         ports:
           - 5433:5432
         options: >-
@@ -40,11 +40,6 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2-
-
-      - name: Start PostgreSQL
-        run: |
-          docker ps -a
-          docker exec postgres psql -U postgres -c "CREATE DATABASE todo_db;"
 
       - name: Build and test with Maven
         run: mvn clean verify -Dspring.profiles.active=ci -Dspring.datasource.url=${{ secrets.DB_URL }}
