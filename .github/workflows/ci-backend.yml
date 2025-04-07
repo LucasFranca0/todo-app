@@ -55,21 +55,24 @@ jobs:
       - name: Download OWASP CLI
         run: |
           curl -sL https://github.com/dependency-check/DependencyCheck/releases/download/v9.0.0/dependency-check-9.0.0-release.zip -o dependency-check.zip
-          unzip dependency-check.zip -d dependency-check
-          chmod +x dependency-check/bin/dependency-check.sh  # Garante permissão de execução
+          mkdir -p dependency-check/bin dependency-check/lib  # Cria diretórios necessários
+          unzip -j dependency-check.zip "dependency-check/bin/*" -d dependency-check/bin
+          unzip -j dependency-check.zip "dependency-check/lib/*" -d dependency-check/lib
+          chmod +x dependency-check/bin/dependency-check.sh
+          ls -la dependency-check/bin/dependency-check.sh
 
       - name: Run OWASP Scan
         run: |
           ./dependency-check/bin/dependency-check.sh \
             --project "todo-app" \
-            --scan "./backend" \  # Ajuste para o caminho do seu projeto
+            --scan "$GITHUB_WORKSPACE/backend" \  # Caminho absoluto para o diretório do projeto
             --format SARIF \
-            --out "./dependency-check-report.sarif"
+            --out "$GITHUB_WORKSPACE/dependency-check-report.sarif"
 
-      - name: Upload SARIF Report
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: "./dependency-check-report.sarif"
+          - name: Upload SARIF Report
+          uses: github/codeql-action/upload-sarif@v2
+          with:
+            sarif_file: "dependency-check-report.sarif"
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
