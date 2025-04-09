@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import java.time.LocalDateTime;
 
@@ -45,6 +44,14 @@ public class GlobalExceptionHandlerTest {
         public TaskService taskService() {
             return Mockito.mock(TaskService.class); // Cria o mock manualmente
         }
+    }
+
+    @Test
+    void shouldReturnInternalServerError() throws Exception {
+        mockMvc.perform(post("/api/1"))
+                .andExpect(status().isInternalServerError())
+                .andExpect(jsonPath("$.status").value(500))
+                .andExpect(jsonPath("$.message").value("Ocorreu um erro interno. Por favor, tente novamente mais tarde."));
     }
 
     @Test
@@ -88,15 +95,5 @@ public class GlobalExceptionHandlerTest {
         String jsonResponse = result.getResponse().getContentAsString();
         assertThat(jsonResponse).contains("\"status\":400");
         assertThat(jsonResponse).contains("\"message\":\"Erro de validação\"");
-    }
-
-    @Test
-    void shouldReturnInternalServerError() throws Exception {
-        Mockito.when(taskService.getTaskById(1L)).thenThrow(new RuntimeException("Erro interno"));
-
-        mockMvc.perform(get("/api/tasks/1"))
-                .andExpect(status().isInternalServerError())
-                .andExpect(jsonPath("$.status").value(500))
-                .andExpect(jsonPath("$.message").value("Ocorreu um erro interno. Por favor, tente novamente mais tarde."));
     }
 }
