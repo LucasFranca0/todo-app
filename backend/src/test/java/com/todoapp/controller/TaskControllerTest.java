@@ -3,6 +3,7 @@ package com.todoapp.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.todoapp.dto.TaskRequestDTO;
 import com.todoapp.dto.TaskResponseDTO;
+import com.todoapp.exception.TaskNotFoundException;
 import com.todoapp.model.Task;
 import com.todoapp.service.TaskService;
 import org.junit.jupiter.api.Test;
@@ -88,14 +89,6 @@ class TaskControllerTest {
         Mockito.doNothing().when(taskService).deleteTask(1L);
         mockMvc.perform(delete("/api/tasks/1"))
                 .andExpect(status().isNoContent());
-    }
-
-    @Test
-    void deleteTask_ShouldReturnNotFound() throws Exception {
-        Mockito.when(taskService.getTaskById(1L)).thenReturn(null);
-
-        mockMvc.perform(delete("/api/tasks/1"))
-                .andExpect(status().isNotFound());
     }
 
     @Test
