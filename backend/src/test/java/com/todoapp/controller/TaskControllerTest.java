@@ -3,7 +3,6 @@ package com.todoapp.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.todoapp.dto.TaskRequestDTO;
 import com.todoapp.dto.TaskResponseDTO;
-import com.todoapp.exception.TaskNotFoundException;
 import com.todoapp.model.Task;
 import com.todoapp.service.TaskService;
 import org.junit.jupiter.api.Test;
@@ -17,7 +16,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -103,5 +104,18 @@ class TaskControllerTest {
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.title").value("Updated Task"));
+    }
+
+    @Test
+    void completeTask_ShouldReturnCompletedTask() throws Exception {
+        Map<String, Boolean> update = new HashMap<>();
+        update.put("completed", true);
+        TaskResponseDTO response = new TaskResponseDTO("Completed Task", true, LocalDateTime.now().plusDays(1));
+        Mockito.when(taskService.updateTaskCompletion(1L, true)).thenReturn(response);
+        mockMvc.perform(patch("/api/tasks/1/complete")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(update)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.completed").value(true));
     }
 }
