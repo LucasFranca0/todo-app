@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="37c0b207-8343-4b04-a7cd-48c244ee93cf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/todoapp/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/todoapp/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/todoapp/exceptions/GlobalExceptionHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/com/todoapp/exceptions/GlobalExceptionHandlerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,10 +72,11 @@
     "Docker.docker-compose.yaml.backend: Compose Deployment.executor": "Run",
     "Docker.docker-compose.yaml.postgres: Compose Deployment.executor": "Run",
     "Docker.docker-compose.yaml: Compose Deployment.executor": "Run",
-    "JUnit.GlobalExceptionHandlerTest.executor": "Run",
+    "JUnit.GlobalExceptionHandlerTest.executor": "Coverage",
     "JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequest.executor": "Run",
     "JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequestAndErrors.executor": "Run",
     "JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequestForMethodArgumentNotValidException.executor": "Run",
+    "JUnit.GlobalExceptionHandlerTest.shouldReturnInternalServerError.executor": "Run",
     "JUnit.GlobalExceptionHandlerTest.shouldReturnNotFound.executor": "Run",
     "JUnit.TaskServiceTest.createTask_ShouldReturnSavedTask.executor": "Run",
     "JUnit.TaskServiceTest.executor": "Coverage",
@@ -122,7 +123,7 @@
       <recent name="C:\Users\Lucas\Workspace\Programação\teste\todo-list\todo_app\src" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GlobalExceptionHandlerTest">
+  <component name="RunManager" selected="JUnit.GlobalExceptionHandlerTest.shouldReturnInternalServerError">
     <configuration name="GlobalExceptionHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="backend" />
       <extension name="coverage">
@@ -186,7 +187,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GlobalExceptionHandlerTest.shouldReturnNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GlobalExceptionHandlerTest.shouldReturnInternalServerError" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="backend" />
       <extension name="coverage">
         <pattern>
@@ -196,7 +197,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.todoapp.exceptions" />
       <option name="MAIN_CLASS_NAME" value="com.todoapp.exceptions.GlobalExceptionHandlerTest" />
-      <option name="METHOD_NAME" value="shouldReturnNotFound" />
+      <option name="METHOD_NAME" value="shouldReturnInternalServerError" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -227,16 +228,16 @@
       <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequest" />
       <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequestAndErrors" />
       <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequestForMethodArgumentNotValidException" />
-      <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnNotFound" />
+      <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnInternalServerError" />
       <item itemvalue="Spring Boot.TodoAppApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnInternalServerError" />
         <item itemvalue="JUnit.GlobalExceptionHandlerTest" />
         <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequestAndErrors" />
         <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequestForMethodArgumentNotValidException" />
         <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequest" />
-        <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnNotFound" />
       </list>
     </recent_temporary>
   </component>
@@ -287,7 +288,7 @@
     <SUITE FILE_PATH="coverage/todo_app$TaskServiceTest.ic" NAME="TaskServiceTest Coverage Results" MODIFIED="1744045274896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.todoapp.service.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/todo_app$GlobalExceptionHandlerTest.ic" NAME="GlobalExceptionHandlerTest Coverage Results" MODIFIED="1744225485104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+    <SUITE FILE_PATH="coverage/todo_app$GlobalExceptionHandlerTest.ic" NAME="GlobalExceptionHandlerTest Coverage Results" MODIFIED="1744232250838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.todoapp.exceptions.*</FILTER>
     </SUITE>
   </component>

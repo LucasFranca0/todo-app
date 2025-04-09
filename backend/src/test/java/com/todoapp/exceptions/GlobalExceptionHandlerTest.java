@@ -89,4 +89,14 @@ public class GlobalExceptionHandlerTest {
         assertThat(jsonResponse).contains("\"status\":400");
         assertThat(jsonResponse).contains("\"message\":\"Erro de validação\"");
     }
+
+    @Test
+    void shouldReturnInternalServerError() throws Exception {
+        Mockito.when(taskService.getTaskById(1L)).thenThrow(new RuntimeException("Erro interno"));
+
+        mockMvc.perform(get("/api/tasks/1"))
+                .andExpect(status().isInternalServerError())
+                .andExpect(jsonPath("$.status").value(500))
+                .andExpect(jsonPath("$.message").value("Ocorreu um erro interno. Por favor, tente novamente mais tarde."));
+    }
 }
