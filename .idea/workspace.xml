@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37c0b207-8343-4b04-a7cd-48c244ee93cf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/todo-frontend/src/contexts/TaskContext/TaskReducer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/todoapp/exceptions/GlobalExceptionHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/com/todoapp/exceptions/GlobalExceptionHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/todoapp/mapper/TaskMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/todoapp/mapper/TaskMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/todoapp/mapper/TaskMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/com/todoapp/mapper/TaskMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/todo-frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-frontend/src/components/ErrorModal.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-frontend/src/components/SuccessModal.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-frontend/src/components/TaskForm.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-frontend/src/components/TaskItem.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-frontend/src/components/TaskList.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-frontend/src/contexts/TaskContext.jsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,9 +87,11 @@
     "JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequestForMethodArgumentNotValidException.executor": "Run",
     "JUnit.GlobalExceptionHandlerTest.shouldReturnInternalServerError.executor": "Run",
     "JUnit.GlobalExceptionHandlerTest.shouldReturnNotFound.executor": "Run",
+    "JUnit.TaskMapperTest.executor": "Run",
     "JUnit.TaskServiceTest.createTask_ShouldReturnSavedTask.executor": "Run",
-    "JUnit.TaskServiceTest.executor": "Coverage",
+    "JUnit.TaskServiceTest.executor": "Run",
     "JUnit.TaskServiceTest.getTask_ShouldReturnSavedTask.executor": "Run",
+    "JUnit.TodoAppApplicationTest.executor": "Run",
     "JUnit.TodoAppApplicationTests.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
@@ -89,7 +100,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.TodoAppApplication (1).executor": "Run",
-    "git-widget-placeholder": "feature/unit-tests",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Lucas/Workspace/Programação/teste/todo-list/todo_app/todo-frontend",
     "node.js.detected.package.eslint": "true",
@@ -116,14 +127,14 @@
       <recent name="C:\Users\Lucas\Workspace\Programação\teste\todo-list\todo_app\backend\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Lucas\Workspace\Programação\teste\todo-list\todo_app\todo-frontend\src\contexts\taskContext" />
       <recent name="C:\Users\Lucas\Workspace\Programação\teste\todo-list\todo_app\backend\src" />
       <recent name="C:\Users\Lucas\Workspace\Programação\teste\todo-list\todo_app\" />
       <recent name="C:\Users\Lucas\Workspace\Programação\teste\todo-list\todo_app\backend" />
       <recent name="C:\Users\Lucas\Workspace\Programação\teste\todo-list\todo_app" />
-      <recent name="C:\Users\Lucas\Workspace\Programação\teste\todo-list\todo_app\src" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GlobalExceptionHandlerTest.shouldReturnInternalServerError">
+  <component name="RunManager" selected="JUnit.TaskMapperTest">
     <configuration name="GlobalExceptionHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="backend" />
       <extension name="coverage">
@@ -135,54 +146,6 @@
       <option name="PACKAGE_NAME" value="com.todoapp.exceptions" />
       <option name="MAIN_CLASS_NAME" value="com.todoapp.exceptions.GlobalExceptionHandlerTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GlobalExceptionHandlerTest.shouldReturnBadRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.todoapp.exceptions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.todoapp.exceptions" />
-      <option name="MAIN_CLASS_NAME" value="com.todoapp.exceptions.GlobalExceptionHandlerTest" />
-      <option name="METHOD_NAME" value="shouldReturnBadRequest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GlobalExceptionHandlerTest.shouldReturnBadRequestAndErrors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.todoapp.exceptions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.todoapp.exceptions" />
-      <option name="MAIN_CLASS_NAME" value="com.todoapp.exceptions.GlobalExceptionHandlerTest" />
-      <option name="METHOD_NAME" value="shouldReturnBadRequestAndErrors" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GlobalExceptionHandlerTest.shouldReturnBadRequestForMethodArgumentNotValidException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.todoapp.exceptions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.todoapp.exceptions" />
-      <option name="MAIN_CLASS_NAME" value="com.todoapp.exceptions.GlobalExceptionHandlerTest" />
-      <option name="METHOD_NAME" value="shouldReturnBadRequestForMethodArgumentNotValidException" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -199,6 +162,51 @@
       <option name="MAIN_CLASS_NAME" value="com.todoapp.exceptions.GlobalExceptionHandlerTest" />
       <option name="METHOD_NAME" value="shouldReturnInternalServerError" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaskMapperTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.todoapp.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.todoapp.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.todoapp.mapper.TaskMapperTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaskServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.todoapp.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.todoapp.service" />
+      <option name="MAIN_CLASS_NAME" value="com.todoapp.service.TaskServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TodoAppApplicationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.todoapp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.todoapp" />
+      <option name="MAIN_CLASS_NAME" value="com.todoapp.TodoAppApplicationTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -224,20 +232,20 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="JUnit.TaskMapperTest" />
+      <item itemvalue="JUnit.TaskServiceTest" />
+      <item itemvalue="JUnit.TodoAppApplicationTest" />
       <item itemvalue="JUnit.GlobalExceptionHandlerTest" />
-      <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequest" />
-      <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequestAndErrors" />
-      <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequestForMethodArgumentNotValidException" />
       <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnInternalServerError" />
       <item itemvalue="Spring Boot.TodoAppApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TaskMapperTest" />
+        <item itemvalue="JUnit.TaskServiceTest" />
+        <item itemvalue="JUnit.TodoAppApplicationTest" />
         <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnInternalServerError" />
         <item itemvalue="JUnit.GlobalExceptionHandlerTest" />
-        <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequestAndErrors" />
-        <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequestForMethodArgumentNotValidException" />
-        <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequest" />
       </list>
     </recent_temporary>
   </component>
@@ -275,6 +283,8 @@
       <workItem from="1743990078737" duration="5833000" />
       <workItem from="1744040004748" duration="14541000" />
       <workItem from="1744076879556" duration="2555000" />
+      <workItem from="1744306247587" duration="965000" />
+      <workItem from="1744325660401" duration="12335000" />
     </task>
     <servers />
   </component>

@@ -27,7 +27,7 @@ public interface TaskMapper {
     @Named("localDateTimeToZonedDateTime")
     static ZonedDateTime convertLocalDateTimeToZonedDateTime(LocalDateTime localDateTime) {
         return localDateTime != null
-                ? localDateTime.atZone(ZoneId.of("UTC"))
+                ? localDateTime.atZone(ZoneId.systemDefault())
                 : null;
     }
 }
