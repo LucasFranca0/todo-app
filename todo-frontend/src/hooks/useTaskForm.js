@@ -15,16 +15,25 @@ export default function useTaskForm() {
             return;
         }
 
+        const getSPTime = () => {
+            return new Date(new Date().toLocaleString('en-US', {
+                timeZone: 'America/Sao_Paulo'
+            }));
+        };
+
+        const selectedDate = new Date(editingTask.dueDate);
+        if (!editingTask.dueDate || selectedDate < getSPTime()) {
+           setError("A data de vencimento não pode ser anterior à data atual");
+            return;
+        }
+
         setIsSaving(true);
         try {
-            // Preparar a tarefa com a data no formato correto
             const taskToUpdate = {
                 ...editingTask,
-                // Usar a função para preservar o fuso horário
                 dueDate: toServerDateTime(editingTask.dueDate)
             };
 
-            // Enviar para o servidor e atualizar o contexto
             await updateTask(taskToUpdate.id, taskToUpdate);
             resetForm();
         } catch (err) {

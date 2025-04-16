@@ -5,17 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37c0b207-8343-4b04-a7cd-48c244ee93cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/todo-frontend/src/contexts/TaskContext/TaskReducer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/todoapp/dto/TaskRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/todoapp/dto/TaskRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/todoapp/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/todoapp/exception/GlobalExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/todoapp/mapper/TaskMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/todoapp/mapper/TaskMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/todoapp/mapper/TaskMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/com/todoapp/mapper/TaskMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/todo-frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-frontend/src/components/ErrorModal.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-frontend/src/components/SuccessModal.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-frontend/src/components/TaskForm.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-frontend/src/components/TaskItem.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-frontend/src/components/TaskList.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-frontend/src/contexts/TaskContext.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/todoapp/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/todoapp/model/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/db/migration/V1__create_task_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/db/migration/V1__create_task_table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/db/migration/V2__alteracao_data_timestamp.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/todo-frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/todo-frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-frontend/src/components/tasks/TaskForm/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/todo-frontend/src/components/tasks/TaskForm/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-frontend/src/components/tasks/TaskItem/TaskEditForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/todo-frontend/src/components/tasks/TaskItem/TaskEditForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-frontend/src/components/tasks/TaskItem/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/todo-frontend/src/components/tasks/TaskItem/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-frontend/src/hooks/useTaskForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/todo-frontend/src/hooks/useTaskForm.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,57 +79,59 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Docker.backend/Dockerfile build.executor": "Run",
-    "Docker.backend/Dockerfile.executor": "Run",
-    "Docker.backend/docker-compose.yaml.backend: Compose Deployment.executor": "Run",
-    "Docker.backend/docker-compose.yaml: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yaml.backend: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yaml.postgres: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yaml: Compose Deployment.executor": "Run",
-    "JUnit.GlobalExceptionHandlerTest.executor": "Coverage",
-    "JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequest.executor": "Run",
-    "JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequestAndErrors.executor": "Run",
-    "JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequestForMethodArgumentNotValidException.executor": "Run",
-    "JUnit.GlobalExceptionHandlerTest.shouldReturnInternalServerError.executor": "Run",
-    "JUnit.GlobalExceptionHandlerTest.shouldReturnNotFound.executor": "Run",
-    "JUnit.TaskMapperTest.executor": "Run",
-    "JUnit.TaskServiceTest.createTask_ShouldReturnSavedTask.executor": "Run",
-    "JUnit.TaskServiceTest.executor": "Run",
-    "JUnit.TaskServiceTest.getTask_ShouldReturnSavedTask.executor": "Run",
-    "JUnit.TodoAppApplicationTest.executor": "Run",
-    "JUnit.TodoAppApplicationTests.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.TodoAppApplication (1).executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Lucas/Workspace/Programação/teste/todo-list/todo_app/todo-frontend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Docker.backend/Dockerfile build.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.backend/Dockerfile.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.backend/docker-compose.yaml.backend: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.backend/docker-compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yaml.backend: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yaml.postgres: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GlobalExceptionHandlerTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequestAndErrors.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequestForMethodArgumentNotValidException.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GlobalExceptionHandlerTest.shouldReturnInternalServerError.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GlobalExceptionHandlerTest.shouldReturnNotFound.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TaskMapperTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TaskServiceTest.createTask_ShouldReturnSavedTask.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TaskServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TaskServiceTest.getTask_ShouldReturnSavedTask.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TodoAppApplicationTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TodoAppApplicationTests.executor&quot;: &quot;Run&quot;,
+    &quot;Remote JVM Debug.Debug Docker.executor&quot;: &quot;Debug&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.TodoAppApplication (1).executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lucas/Workspace/Programação/teste/todo-list/todo_app/todo-frontend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lucas\Workspace\Programação\teste\todo-list\todo_app\todo-frontend" />
       <recent name="C:\Users\Lucas\Workspace\Programação\teste\todo-list\todo_app\backend\src\main" />
       <recent name="C:\Users\Lucas\Workspace\Programação\teste\todo-list\todo_app\backend\src" />
     </key>
@@ -134,22 +143,7 @@
       <recent name="C:\Users\Lucas\Workspace\Programação\teste\todo-list\todo_app" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TaskMapperTest">
-    <configuration name="GlobalExceptionHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.todoapp.exceptions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.todoapp.exceptions" />
-      <option name="MAIN_CLASS_NAME" value="com.todoapp.exceptions.GlobalExceptionHandlerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Docker.docker-compose.yaml.backend: Compose Deployment">
     <configuration name="GlobalExceptionHandlerTest.shouldReturnInternalServerError" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="backend" />
       <extension name="coverage">
@@ -176,6 +170,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.todoapp.mapper" />
       <option name="MAIN_CLASS_NAME" value="com.todoapp.mapper.TaskMapperTest" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -211,6 +206,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Debug Docker" type="Remote">
+      <module name="backend" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="5005" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
+    </configuration>
     <configuration name="TodoAppApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="backend" />
@@ -231,21 +240,35 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="docker-compose.yaml.backend: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="backend" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <list>
+      <item itemvalue="Docker.docker-compose.yaml.backend: Compose Deployment" />
       <item itemvalue="JUnit.TaskMapperTest" />
       <item itemvalue="JUnit.TaskServiceTest" />
       <item itemvalue="JUnit.TodoAppApplicationTest" />
-      <item itemvalue="JUnit.GlobalExceptionHandlerTest" />
       <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnInternalServerError" />
+      <item itemvalue="Remote JVM Debug.Debug Docker" />
       <item itemvalue="Spring Boot.TodoAppApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.docker-compose.yaml.backend: Compose Deployment" />
         <item itemvalue="JUnit.TaskMapperTest" />
         <item itemvalue="JUnit.TaskServiceTest" />
         <item itemvalue="JUnit.TodoAppApplicationTest" />
         <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnInternalServerError" />
-        <item itemvalue="JUnit.GlobalExceptionHandlerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -285,11 +308,38 @@
       <workItem from="1744076879556" duration="2555000" />
       <workItem from="1744306247587" duration="965000" />
       <workItem from="1744325660401" duration="12335000" />
+      <workItem from="1744393483175" duration="8424000" />
+      <workItem from="1744404079472" duration="2481000" />
+      <workItem from="1744413415174" duration="8499000" />
+      <workItem from="1744652890393" duration="2761000" />
+      <workItem from="1744668851570" duration="7000" />
+      <workItem from="1744676385968" duration="8045000" />
+      <workItem from="1744768311103" duration="3914000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/backend/src/main/java/com/todoapp/controller/TaskController.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/backend/src/main/java/com/todoapp/controller/TaskController.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/todo_app$GlobalExceptionHandlerTest_shouldReturnBadRequest.ic" NAME="GlobalExceptionHandlerTest.shouldReturnBadRequest Coverage Results" MODIFIED="1744225441279" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">

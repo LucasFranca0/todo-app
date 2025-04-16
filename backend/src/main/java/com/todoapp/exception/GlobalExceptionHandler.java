@@ -4,11 +4,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -38,18 +42,26 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
-        ErrorResponse error = new ErrorResponse(
-                HttpStatus.BAD_REQUEST.value(),
-                "Erro de validação",
-                ex.getBindingResult().getFieldErrors().stream()
-                        .map(err -> new ValidationError(
-                                err.getField(),
-                                err.getDefaultMessage()
-                        ))
-                        .toList()
-        );
-        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Object> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+
+            if (fieldName.equals("dueDate")) {
+                logger.error("Erro de validação na data: {}, valor recebido: {}",
+                        errorMessage, ((FieldError) error).getRejectedValue());
+            }
+        });
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("status", 400);
+        response.put("message", "Erro de validação");
+        response.put("errors", errors);
+
+        return ResponseEntity.badRequest().body(response);
     }
 
     public record ErrorResponse(

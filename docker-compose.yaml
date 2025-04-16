@@ -6,15 +6,35 @@ services:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - TZ=America/Sao_Paulo
     ports:
       - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    healthcheck: # Verifica se o PostgreSQL está pronto
-      test: [ "CMD-SHELL", "pg_isready -U postgres -d todo_db" ]
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}" ]
       interval: 5s
       timeout: 5s
       retries: 5
+
+  frontend:
+    build:
+      context: ./todo-frontend
+      dockerfile: Dockerfile
+    container_name: react-frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app:/src
+      - /app/node_modules
+    stdin_open: true
+    tty: true
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      - REACT_APP_BACKEND_URL=${REACT_APP_API_URL}
+    env_file: .env
 
   backend:
     build:
@@ -25,18 +45,22 @@ services:
       - "8080:8080"
     depends_on:
       postgres:
-        condition: service_healthy  # Só inicia após o PostgreSQL estar pronto
+        condition: service_healthy
     environment:
-      - SPRING_DATASOURCE_URL=${DB_URL}
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/${DB_NAME}
       - SPRING_DATASOURCE_USERNAME=${DB_USER}
       - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
       - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
-      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
-      - SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE=2
-      - SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE=10
-      - SPRING_JPA_HIBERNATE_DDL-AUTO= validate
-      - SPRING_FLYWAY_ENABLED= true
-      - SPRING_FLYWAY_LOCATIONS= classpath:db/migration
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=validate
+      - SPRING_FLYWAY_ENABLED=true
     env_file: .env
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:8080/actuator/health || exit 1" ]
+      interval: 20s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+
 volumes:
   postgres_data:
+    driver: local

@@ -35,6 +35,33 @@ const TaskItem = ({
         }
     }, [completeTask, isCompleting, task]);
 
+    const handleSaveWithValidation = useCallback(async () => {
+        // Obter data atual em São Paulo
+        const getSPTime = () => {
+            const options = { timeZone: 'America/Sao_Paulo' };
+            return new Date(new Date().toLocaleString('pt-BR', options));
+        };
+
+        // Converter data selecionada para o fuso de SP
+        const selectedDate = new Date(editingTask.dueDate);
+        const spSelectedDate = new Date(selectedDate.toLocaleString('pt-BR', {
+            timeZone: 'America/Sao_Paulo'
+        }));
+
+        // Comparação com horário atual de SP
+        if (spSelectedDate < getSPTime()) {
+            setError('Não é permitido definir datas/horários passados');
+            return;
+        }
+
+        if (editingTask.title.trim().length < 3) {
+            setError('O título deve ter pelo menos 3 caracteres');
+            return;
+        }
+
+        onSaveClick();
+    }, [editingTask, onSaveClick]);
+
     // Função segura para excluir tarefas
     const handleDelete = useCallback(async () => {
         if (isDeleting || !task?.id) return;
@@ -58,21 +85,32 @@ const TaskItem = ({
 
     return (
         <>
-            <Paper elevation={1} sx={{ marginBottom: 1 }}>
-                <ListItem>
+            <Paper elevation={1} sx={{
+                marginBottom: 1,
+                opacity: task.completed ? 0.6 : 1,
+                transition: 'opacity 0.3s ease'
+            }}>
+                <ListItem sx={{
+                    position: 'relative',
+                    bgcolor: task.completed ? 'action.selected' : 'background.paper'
+                }}>
                     <Checkbox
                         checked={!!task.completed}
                         onChange={handleComplete}
                         disabled={isCompleting || isDeleting || isEditing}
                         color="primary"
-                        aria-label={task.completed ? "Marcar como não concluída" : "Marcar como concluída"}
+                        sx={{
+                            '&.Mui-disabled': {
+                                color: 'text.disabled'
+                            }
+                        }}
                     />
 
                     {isEditing ? (
                         <TaskEditForm
                             editingTask={editingTask}
                             onChange={onInputChange}
-                            onSave={onSaveClick}
+                            onSave={handleSaveWithValidation}  // Usa a validação reforçada
                             onCancel={onCancelEdit}
                             isSaving={isSaving}
                         />
@@ -87,7 +125,7 @@ const TaskItem = ({
                 </ListItem>
             </Paper>
 
-            <ErrorAlert error={error} onClose={handleCloseError} />
+            <ErrorAlert error={error} onClose={() => setError(null)} />
         </>
     );
 };

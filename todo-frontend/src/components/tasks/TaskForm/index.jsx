@@ -1,4 +1,3 @@
-// src/components/tasks/TaskForm/index.jsx
 import React, { useState } from 'react';
 import { Box, TextField, Button, Grid, Paper } from '@mui/material';
 import { useTasks } from '../../../contexts/TaskContext';
@@ -13,6 +12,7 @@ const TaskForm = ({ onTaskAdded, onError }) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleInputChange = (e) => {
+        onError(null);
         setNewTask({
             ...newTask,
             [e.target.name]: e.target.value
@@ -23,6 +23,18 @@ const TaskForm = ({ onTaskAdded, onError }) => {
         e.preventDefault();
 
         // Validação
+        const getSPTime = () => {
+            return new Date(new Date().toLocaleString('en-US', {
+                timeZone: 'America/Sao_Paulo'
+            }));
+        };
+
+        const selectedDate = new Date(newTask.dueDate);
+        if (selectedDate < getSPTime()) {
+            onError("Não é permitido agendar para datas/horários passados (Horário de SP)");
+            return;
+        }
+
         if (!newTask.title.trim()) {
             onError("O título da tarefa não pode estar vazio");
             return;
@@ -55,6 +67,32 @@ const TaskForm = ({ onTaskAdded, onError }) => {
         }
     };
 
+    const getMinDateTime = () => {
+        // Configurações para o fuso horário de São Paulo
+        const options = {
+            timeZone: 'America/Sao_Paulo',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+        };
+
+        // Formatador para o fuso horário específico
+        const formatter = new Intl.DateTimeFormat('pt-BR', options);
+        const parts = formatter.formatToParts(new Date());
+
+        // Extrair componentes da data formatada
+        const year = parts.find(p => p.type === 'year').value;
+        const month = parts.find(p => p.type === 'month').value;
+        const day = parts.find(p => p.type === 'day').value;
+        const hour = parts.find(p => p.type === 'hour').value.padStart(2, '0');
+        const minute = parts.find(p => p.type === 'minute').value.padStart(2, '0');
+
+        return `${year}-${month}-${day}T${hour}:${minute}`;
+    };
+
     return (
         <Paper elevation={1} sx={{ p: 2 }}>
             <form onSubmit={handleSubmit}>
@@ -80,6 +118,7 @@ const TaskForm = ({ onTaskAdded, onError }) => {
                             fullWidth
                             required
                             InputLabelProps={{ shrink: true }}
+                            inputProps={{ min: getMinDateTime()}} // Bloqueia datas e horários anteriores ao atual
                             disabled={isSubmitting}
                         />
                     </Grid>
