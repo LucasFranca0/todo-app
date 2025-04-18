@@ -65,10 +65,8 @@ public class GlobalExceptionHandlerTest {
         assertThat(jsonResponse).isNotEmpty();
         assertThat(jsonResponse).contains("\"status\":400");
         assertThat(jsonResponse).contains("\"message\":\"Erro de validação\"");
-        assertThat(jsonResponse).contains("\"field\":\"title\"");
-        assertThat(jsonResponse).contains("\"message\":\"O título é obrigatório\"");
-        assertThat(jsonResponse).contains("\"field\":\"dueDate\"");
-        assertThat(jsonResponse).contains("\"message\":\"A data de vencimento deve ser no futuro ou presente\"");
+        assertThat(jsonResponse).contains("\"title\":\"O título é obrigatório\"");
+        assertThat(jsonResponse).contains("\"dueDate\":\"A data de vencimento deve ser no futuro ou presente\"");
     }
 
     @Test
