@@ -38,7 +38,7 @@ class TaskMapperTest {
 
         assertThat(task).isNotNull();
         assertThat(task.getTitle()).isEqualTo("New Task");
-        assertThat(task.getDueDate()).isEqualTo(ZonedDateTime.of(2023, 12, 31, 23, 59, 0, 0, ZoneId.systemDefault()));
+        assertThat(task.getDueDate()).isEqualTo(ZonedDateTime.of(2023, 12, 31, 23, 59, 0, 0, ZoneId.of("America/Sao_Paulo")));
     }
 
     @Test

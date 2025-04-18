@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="37c0b207-8343-4b04-a7cd-48c244ee93cf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/todoapp/TodoAppAplicationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/com/todoapp/TodoAppAplicationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/todoapp/exceptions/GlobalExceptionHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/com/todoapp/exceptions/GlobalExceptionHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/todoapp/mapper/TaskMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/com/todoapp/mapper/TaskMapperTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +78,12 @@
     "JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequestForMethodArgumentNotValidException.executor": "Run",
     "JUnit.GlobalExceptionHandlerTest.shouldReturnInternalServerError.executor": "Run",
     "JUnit.GlobalExceptionHandlerTest.shouldReturnNotFound.executor": "Run",
+    "JUnit.TaskControllerTest.executor": "Run",
     "JUnit.TaskMapperTest.executor": "Run",
+    "JUnit.TaskMapperTest.shouldConvertLocalDateTimeToZonedDateTime.executor": "Run",
+    "JUnit.TaskMapperTest.shouldMapTaskRequestDTOToTask.executor": "Run",
+    "JUnit.TaskMapperTest.shouldMapTaskToTaskResponseDTO.executor": "Run",
+    "JUnit.TaskMapperTest.shouldReturnNullWhenLocalDateTimeIsNull.executor": "Run",
     "JUnit.TaskServiceTest.createTask_ShouldReturnSavedTask.executor": "Run",
     "JUnit.TaskServiceTest.executor": "Run",
     "JUnit.TaskServiceTest.getTask_ShouldReturnSavedTask.executor": "Run",
@@ -129,53 +133,7 @@
       <recent name="C:\Users\Lucas\Workspace\Programação\teste\todo-list\todo_app" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TaskControllerTest">
-    <configuration name="GlobalExceptionHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.todoapp.exceptions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.todoapp.exceptions" />
-      <option name="MAIN_CLASS_NAME" value="com.todoapp.exceptions.GlobalExceptionHandlerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GlobalExceptionHandlerTest.shouldReturnBadRequestAndErrors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.todoapp.exceptions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.todoapp.exceptions" />
-      <option name="MAIN_CLASS_NAME" value="com.todoapp.exceptions.GlobalExceptionHandlerTest" />
-      <option name="METHOD_NAME" value="shouldReturnBadRequestAndErrors" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TaskControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.todoapp.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.todoapp.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.todoapp.controller.TaskControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.TaskMapperTest.shouldMapTaskRequestDTOToTask">
     <configuration name="TaskMapperTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="backend" />
       <extension name="coverage">
@@ -192,17 +150,66 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TaskServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TaskMapperTest.shouldConvertLocalDateTimeToZonedDateTime" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="backend" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.todoapp.service.*" />
+          <option name="PATTERN" value="com.todoapp.mapper.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.todoapp.service" />
-      <option name="MAIN_CLASS_NAME" value="com.todoapp.service.TaskServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="com.todoapp.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.todoapp.mapper.TaskMapperTest" />
+      <option name="METHOD_NAME" value="shouldConvertLocalDateTimeToZonedDateTime" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaskMapperTest.shouldMapTaskRequestDTOToTask" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.todoapp.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.todoapp.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.todoapp.mapper.TaskMapperTest" />
+      <option name="METHOD_NAME" value="shouldMapTaskRequestDTOToTask" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaskMapperTest.shouldMapTaskToTaskResponseDTO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.todoapp.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.todoapp.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.todoapp.mapper.TaskMapperTest" />
+      <option name="METHOD_NAME" value="shouldMapTaskToTaskResponseDTO" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaskMapperTest.shouldReturnNullWhenLocalDateTimeIsNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.todoapp.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.todoapp.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.todoapp.mapper.TaskMapperTest" />
+      <option name="METHOD_NAME" value="shouldReturnNullWhenLocalDateTimeIsNull" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -242,21 +249,21 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="JUnit.GlobalExceptionHandlerTest" />
-      <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequestAndErrors" />
-      <item itemvalue="JUnit.TaskControllerTest" />
+      <item itemvalue="JUnit.TaskMapperTest.shouldConvertLocalDateTimeToZonedDateTime" />
+      <item itemvalue="JUnit.TaskMapperTest.shouldMapTaskRequestDTOToTask" />
+      <item itemvalue="JUnit.TaskMapperTest.shouldMapTaskToTaskResponseDTO" />
+      <item itemvalue="JUnit.TaskMapperTest.shouldReturnNullWhenLocalDateTimeIsNull" />
       <item itemvalue="JUnit.TaskMapperTest" />
-      <item itemvalue="JUnit.TaskServiceTest" />
       <item itemvalue="Remote JVM Debug.Debug Docker" />
       <item itemvalue="Spring Boot.TodoAppApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TaskControllerTest" />
-        <item itemvalue="JUnit.GlobalExceptionHandlerTest" />
-        <item itemvalue="JUnit.GlobalExceptionHandlerTest.shouldReturnBadRequestAndErrors" />
+        <item itemvalue="JUnit.TaskMapperTest.shouldMapTaskRequestDTOToTask" />
+        <item itemvalue="JUnit.TaskMapperTest.shouldConvertLocalDateTimeToZonedDateTime" />
+        <item itemvalue="JUnit.TaskMapperTest.shouldReturnNullWhenLocalDateTimeIsNull" />
+        <item itemvalue="JUnit.TaskMapperTest.shouldMapTaskToTaskResponseDTO" />
         <item itemvalue="JUnit.TaskMapperTest" />
-        <item itemvalue="JUnit.TaskServiceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -303,7 +310,7 @@
       <workItem from="1744668851570" duration="7000" />
       <workItem from="1744676385968" duration="8045000" />
       <workItem from="1744768311103" duration="4379000" />
-      <workItem from="1744996644868" duration="3142000" />
+      <workItem from="1744996644868" duration="3763000" />
     </task>
     <servers />
   </component>
